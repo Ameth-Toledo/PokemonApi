@@ -1,0 +1,8 @@
+<app-header></app-header>
+
+<mat-list>
+  <mat-list-item *ngFor="let pokemon of pokemones">
+    <h3 matLine>{{ pokemon.name }}</h3>
+    <p matLine>{{ pokemon.url }}</p>
+  </mat-list-item>
+</mat-list>
