@@ -1,0 +1,46 @@
+.pokemon-list-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pokemon-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente el contenido */
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s;
+  
+    &:hover {
+      background-color: #e3f2fd; /* Un fondo azul claro al pasar el cursor */
+    }
+  }
+  
+  .pokemon-info {
+    flex-grow: 1; /* Permite que la información ocupe todo el espacio disponible */
+  }
+  
+  .pokemon-name {
+    font-weight: bold;
+    font-size: 18px;
+    color: #2c3e50;
+  }
+  
+  .pokemon-url {
+    font-size: 14px;
+    color: #7f8c8d;
+    word-break: break-all; /* Para evitar que las URLs se desborden */
+  }
+  
+  /* Agrega esto en tu archivo home.component.scss */
+  i.fa-star {
+    font-size: 24px; /* Ajusta el tamaño del icono según lo necesario */
+    cursor: pointer; /* Cambia el cursor a un puntero al pasar por el icono */
+    color: #f39c12; /* Cambia el color del icono si lo deseas */
+    margin-left: 10px; /* Agrega espacio entre el texto y el icono */
+  }
+  

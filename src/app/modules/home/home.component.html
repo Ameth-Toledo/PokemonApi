@@ -1,8 +1,21 @@
 <app-header></app-header>
 
-<mat-list>
-  <mat-list-item *ngFor="let pokemon of pokemones">
-    <h3 matLine>{{ pokemon.name }}</h3>
-    <p matLine>{{ pokemon.url }}</p>
-  </mat-list-item>
-</mat-list>
+<div class="pokemon-list-container">
+  <mat-list>
+    <mat-list-item *ngFor="let pokemon of pokemones" class="pokemon-list-item">
+      <div class="pokemon-info">
+        <div 
+          matLine 
+          class="pokemon-name" 
+          (click)="viewPokemonDetails(pokemon.url)">
+          {{ pokemon.name | titlecase }}
+        </div>
+      </div>
+      <i
+        class="fa-star"
+        [ngClass]="{ 'fas': pokemon.isFavorite, 'far': !pokemon.isFavorite }"
+        (click)="toggleFavorite(pokemon)"
+      ></i>    
+    </mat-list-item>
+  </mat-list>
+</div>
