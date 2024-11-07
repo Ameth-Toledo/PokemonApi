@@ -8,7 +8,7 @@
           matLine 
           class="pokemon-name" 
           (click)="viewPokemonDetails(pokemon.url)">
-          {{ pokemon.name | titlecase }}
+          {{ pokemon.name | titlecase | pokemoName}}
         </div>
       </div>
       <i

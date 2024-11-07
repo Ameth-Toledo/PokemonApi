@@ -5,11 +5,12 @@ import { HeaderComponent } from "../../components/header/header.component";
 import { MatListModule } from '@angular/material/list';
 import { PokeApiService } from '../../services/poke-api.service';
 import { FavoritePokemon } from '../../models/pokemon';
+import { PokemoNamePipe } from '../../pipes/pokemo-name.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, MatListModule], 
+  imports: [CommonModule, HeaderComponent, MatListModule, PokemoNamePipe], 
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

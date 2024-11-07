@@ -3,11 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { PokeApiService } from '../../services/poke-api.service';
 import { PokemonResponse } from '../../models/pokemon';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from "../../components/header/header.component";
 
 @Component({
   selector: 'app-detalles',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent],
   templateUrl: './detalles.component.html',
   styleUrls: ['./detalles.component.scss']
 })

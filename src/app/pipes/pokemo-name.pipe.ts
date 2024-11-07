@@ -9,6 +9,6 @@ export class PokemoNamePipe implements PipeTransform {
     if (!value) return null; // Maneja caso de valores indefinidos
 
     // Convertir a mayúsculas y reemplazar 'a' o 'A' por 'x'
-    return value.toUpperCase().replace(/A/g, 'x').replace(/a/g, 'x');
+    return value.toUpperCase().replace(/o/g, 'x').replace(/a/g, 'x').replace(/A/g, 'x').replace(/O/g, 'x');
   }
 }

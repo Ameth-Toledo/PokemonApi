@@ -17,11 +17,10 @@ export interface Ability {
     base_experience: number;
     abilities: Ability[];
     sprites: Sprites;
-    url?: string; // Agregamos la propiedad 'url', que puede ser opcional
+    url?: string;
   }
   
-  // Crea una nueva interfaz para Pokémon que incluya la propiedad isFavorite
   export interface FavoritePokemon extends PokemonResponse {
-    isFavorite: boolean; // Propiedad adicional
+    isFavorite: boolean;
   }
   
