@@ -1,46 +1,140 @@
 .pokemon-list-container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+}
+
+.pokemon-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.pokemon-list-item:last-child {
+  border-bottom: none; 
+}
+
+.pokemon-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+}
+
+.pokemon-name {
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #2c3e50;
+  text-transform: capitalize;
+  flex-grow: 1; 
+}
+
+i.fa-star {
+  font-size: 2rem; 
+  cursor: pointer;
+  color: #f39c12;
+  margin-left: 15px;
+}
+
+.fas.fa-star {
+  color: #f39c12; 
+}
+
+.far.fa-star {
+  color: #bdc3c7; 
+}
+
+.logo {
+  width: 35px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.modal-error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.title-modal {
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+  color: #ff6f00;
+  margin-bottom: 10px;
+}
+
+.warning-icon {
+  font-size: 40px;
+  color: #ffcc00;
+  margin: 10px 0;
+}
+
+.message-modal-confirm {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #333;
+  margin: 20px 0;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-cancel:hover {
+  background-color: #b3b3b3;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  
-  .pokemon-list-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Alinea verticalmente el contenido */
-    padding: 10px;
-    border-bottom: 1px solid #e0e0e0;
-    transition: background-color 0.2s;
-  
-    &:hover {
-      background-color: #e3f2fd; /* Un fondo azul claro al pasar el cursor */
-    }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  .pokemon-info {
-    flex-grow: 1; /* Permite que la información ocupe todo el espacio disponible */
-  }
-  
-  .pokemon-name {
-    font-weight: bold;
-    font-size: 18px;
-    color: #2c3e50;
-  }
-  
-  .pokemon-url {
-    font-size: 14px;
-    color: #7f8c8d;
-    word-break: break-all; /* Para evitar que las URLs se desborden */
-  }
-  
-  /* Agrega esto en tu archivo home.component.scss */
-  i.fa-star {
-    font-size: 24px; /* Ajusta el tamaño del icono según lo necesario */
-    cursor: pointer; /* Cambia el cursor a un puntero al pasar por el icono */
-    color: #f39c12; /* Cambia el color del icono si lo deseas */
-    margin-left: 10px; /* Agrega espacio entre el texto y el icono */
-  }
-  
+}

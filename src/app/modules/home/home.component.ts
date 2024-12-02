@@ -16,32 +16,70 @@ import { PokemoNamePipe } from '../../pipes/pokemo-name.pipe';
 })
 export class HomeComponent implements OnInit {
   pokemones: FavoritePokemon[] = [];
+  favoritos: FavoritePokemon[] = [];
+  isModalOpen : boolean = false;
+
+  openModal(): void {
+    this.isModalOpen = true;
+  }
+  
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
 
   constructor(private pokeApiService: PokeApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.pokeApiService.getAllPokemones().subscribe({
       next: (response) => {
-        console.log(response); 
         this.pokemones = response.results.map(pokemon => ({
           ...pokemon,
-          isFavorite: false // Añade isFavorite a cada Pokémon
-        })) as FavoritePokemon[]; // Asegúrate de que sea del tipo FavoritePokemon
+          isFavorite: false 
+        })) as FavoritePokemon[];
       },
       error: (err) => console.error('Error fetching Pokémon data:', err)
     });
   }
 
   toggleFavorite(pokemon: FavoritePokemon): void {
-    pokemon.isFavorite = !pokemon.isFavorite; 
-  }
+    const favoritos = JSON.parse(localStorage.getItem('favoritos') || '[]');
+  
+    if (!pokemon.isFavorite) {
+      if (favoritos.length >= 5) {
+        this.openModal(); 
+        return; 
+      }
+  
+      const id = this.extractIdFromUrl(pokemon.url || '');
+      this.pokeApiService.getPokemonById(id).subscribe({
+        next: (fullPokemon) => {
+          const favoritePokemon: FavoritePokemon = {
+            ...fullPokemon,
+            isFavorite: true,
+          };
+  
+          favoritos.push(favoritePokemon);
+          localStorage.setItem('favoritos', JSON.stringify(favoritos));
+  
+          this.favoritos = favoritos;
+        },
+        error: (err) => console.error('Error fetching Pokémon details:', err),
+      });
+    } else {
+      const updatedFavoritos = favoritos.filter((fav: FavoritePokemon) => fav.id !== pokemon.id);
+      localStorage.setItem('favoritos', JSON.stringify(updatedFavoritos));
+      this.favoritos = updatedFavoritos;
+    }
+  
+    pokemon.isFavorite = !pokemon.isFavorite;
+  }  
 
   viewPokemonDetails(url?: string): void {
     if (url) {
       const id = this.extractIdFromUrl(url);
       this.router.navigate(['/detalles', id]);
     } else {
-      console.error('URL is undefined'); // Manejo de error
+      console.error('URL is undefined');
     }
   }
 

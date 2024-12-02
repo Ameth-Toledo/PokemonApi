@@ -1,4 +1,12 @@
 <header class="header-pokeApi">
-    <img src="pokeapi_256.png" alt="pokeApi" class="logo-pokeapi">
+    <img src="pokeapi_256.png" alt="pokeApi" class="logo-pokeapi" (click)="enviarHome($event)">
+    
     <h1 class="pokeapi-title">PokeApi Recuuuu</h1>
-</header>
+  
+    <div class="header-icons">
+      <i class="fas fa-home icon" (click)="enviarHome($event)" title="Home"></i>
+      <i class="fas fa-heart icon" (click)="enviarFavoritos($event)" title="Favoritos"></i>
+      <i class="fas fa-info-circle icon" (click)="enviarDetalles($event)" title="Detalles"></i>
+    </div>
+  </header>
+  

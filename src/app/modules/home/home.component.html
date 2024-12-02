@@ -4,18 +4,33 @@
   <mat-list>
     <mat-list-item *ngFor="let pokemon of pokemones" class="pokemon-list-item">
       <div class="pokemon-info">
+        <img src="pokemon.png" alt="logo" class="logo">
         <div 
           matLine 
           class="pokemon-name" 
           (click)="viewPokemonDetails(pokemon.url)">
-          {{ pokemon.name | titlecase | pokemoName}}
+          {{ pokemon.name | titlecase | pokemoName }}
         </div>
+        <i
+          class="fa-star"
+          [ngClass]="{ 'fas': pokemon.isFavorite, 'far': !pokemon.isFavorite }"
+          (click)="toggleFavorite(pokemon)"
+          title="Toggle Favorite"
+        ></i>
       </div>
-      <i
-        class="fa-star"
-        [ngClass]="{ 'fas': pokemon.isFavorite, 'far': !pokemon.isFavorite }"
-        (click)="toggleFavorite(pokemon)"
-      ></i>    
     </mat-list-item>
   </mat-list>
+</div>
+
+<div *ngIf="isModalOpen" class="modal-error">
+  <div class="modal-content">
+    <h1 class="title-modal">Warning</h1>
+    <i class="fas fa-exclamation-triangle warning-icon"></i>
+    <h2 class="message-modal-confirm">
+      Lista de Pokemones llena
+    </h2>
+    <div class="modal-buttons">
+      <button class="btn-cancel" (click)="closeModal()">Aceptar</button>
+    </div>
+  </div>
 </div>

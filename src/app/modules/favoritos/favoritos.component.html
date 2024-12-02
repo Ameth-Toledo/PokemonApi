@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<div class="favoritos-container">
+  <h2 class="nota-fav">Pokémon Favoritos</h2>
+
+  <div *ngIf="favoritos.length === 0" class="empty-message">
+    <p class="message">No tienes Pokémon favoritos aún.</p>
+  </div>
+
+  <div *ngIf="favoritos.length > 0" class="cards-container">
+    <mat-card *ngFor="let pokemon of favoritos" class="pokemon-card">
+      <mat-card-header class="pokemon-card-header">
+        <mat-card-title>{{ pokemon.name | titlecase }}</mat-card-title>
+        <i 
+          class="fas fa-trash delete-icon" 
+          (click)="openModal(pokemon)">
+        </i>
+      </mat-card-header>
+      <img 
+        mat-card-image 
+        [src]="pokemon.sprites?.front_default || 'placeholder.png'" 
+        alt="{{ pokemon.name }}">
+      <mat-card-content>
+        <p>Detalles del Pokémon:</p>
+        <p><strong>Altura:</strong> {{ pokemon.height }}</p>
+        <p><strong>Peso:</strong> {{ pokemon.weight }}</p>
+        <p><strong>Experiencia base:</strong> {{ pokemon.base_experience }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="isModalOpen" class="modal-confirmacion">
+  <div class="modal-content">
+    <h1 class="title-modal">Warning</h1>
+    <i class="fas fa-exclamation-triangle warning-icon"></i>
+    <h2 class="message-modal-confirm">
+      ¿Estás seguro que deseas eliminar de favoritos?
+    </h2>
+    <div class="modal-buttons">
+      <button class="btn-confirm" (click)="confirmDeletion()">Eliminar</button>
+      <button class="btn-cancel" (click)="closeModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
